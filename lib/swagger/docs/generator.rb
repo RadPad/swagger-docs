@@ -140,7 +140,7 @@ module Swagger
         private
 
         def filter_path_params(path, params)
-          params.reject do |param|
+          (params || []).reject do |param|
             param_as_variable = "{#{param[:name]}}"
             param[:param_type] == :path && !path.include?(param_as_variable)
           end
